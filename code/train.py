@@ -5,31 +5,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms, models
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from dataset import DeepFakeDataset
-
-
-transform = transforms.Compose(
-    [
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    ]
-)
-
-train_dataset = DeepFakeDataset(root_dir="data/train", transform=transform)
-test_dataset = DeepFakeDataset(root_dir="data/test", transform=transform)
-
-train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
-
-model = models.resnet50(pretrained=True)
-model.fc = nn.Linear(model.fc.in_features, 2)
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(device)
-model = model.to(device)
-
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+import argparse
 
 
 def train(model, train_loader, criterion, optimizer, device):
@@ -69,7 +45,40 @@ def evaluate(model, test_loader, device):
     return accuracy, precision, recall, f1
 
 
-def main():
+def prepare_model_resnet50(train_path: str, test_path: str):
+    transform = transforms.Compose(
+        [
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ]
+    )
+
+    train_dataset = DeepFakeDataset(root_dir=train_path, transform=transform)
+    test_dataset = DeepFakeDataset(root_dir=test_path, transform=transform)
+
+    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+    test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+    model = models.resnet50()
+    model.fc = nn.Linear(model.fc.in_features, 2)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Device: {device}")
+    model = model.to(device)
+
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+    return model, device, train_loader, test_loader, criterion, optimizer
+
+
+def main(train_path: str, test_path: str, model_out: str):
+
+    model, device, train_loader, test_loader, criterion, optimizer = (
+        prepare_model_resnet50(train_path, test_path)
+    )
+
     epochs = 10
     for epoch in range(epochs):
         train_loss = train(model, train_loader, criterion, optimizer, device)
@@ -81,9 +90,17 @@ def main():
             f"Accuracy: {accuracy:.4f}, Precision: {precision:.4f}, Recall: {recall:.4f}, F1-Score: {f1:.4f}"
         )
 
-    torch.save(model.state_dict(), "deepfake_detector.pth")
-    torch.save(optimizer.state_dict(), "optimizer.pth")
+    torch.save(model.state_dict(), model_out)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--train_path", required=False, default="data/train")
+    parser.add_argument("--test_path", required=False, default="data/test")
+    parser.add_argument(
+        "--model_out", required=False, default="deepfake_detector_model.pth"
+    )
+
+    args = parser.parse_args()
+
+    main(args.train_path, args.test_path, args.model_out)
