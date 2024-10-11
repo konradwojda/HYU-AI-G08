@@ -4,6 +4,10 @@ from PIL import Image
 
 
 class DeepFakeDataset(Dataset):
+    """
+    Class for loading and storing images from root_dir as a dataset.
+    """
+
     def __init__(self, root_dir, transform=None):
         self.root_dir = root_dir
         self.transform = transform
