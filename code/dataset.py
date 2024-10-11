@@ -9,7 +9,7 @@ class DeepFakeDataset(Dataset):
         self.transform = transform
         self.image_paths = []
         self.labels = []
-        for label, class_name in enumerate(["real", "fake"]):
+        for label, class_name in enumerate(["Real", "Fake"]):
             class_dir = os.path.join(root_dir, class_name)
             for image_name in os.listdir(class_dir):
                 self.image_paths.append(os.path.join(class_dir, image_name))
