@@ -45,7 +45,7 @@ def evaluate(model, test_loader, device):
     return accuracy, precision, recall, f1
 
 
-def prepare_model_resnet50(train_path: str, test_path: str):
+def prepare_model(train_path: str, test_path: str, model_name: str = "RESNET50"):
     transform = transforms.Compose(
         [
             transforms.Resize((224, 224)),
@@ -60,8 +60,13 @@ def prepare_model_resnet50(train_path: str, test_path: str):
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
-    model = models.resnet50()
-    model.fc = nn.Linear(model.fc.in_features, 2)
+    match(model_name):
+        case "RESNET50":
+            model = get_resnet50()
+        case "EFFICIENTNET":
+            model = get_efficientnet()
+        case _:
+            model = get_resnet50()
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
@@ -73,10 +78,20 @@ def prepare_model_resnet50(train_path: str, test_path: str):
     return model, device, train_loader, test_loader, criterion, optimizer
 
 
-def main(train_path: str, test_path: str, model_out: str):
+def get_resnet50():
+    model = models.resnet50()
+    model.fc = nn.Linear(model.fc.in_features, 2)
+    return model
+
+def get_efficientnet():
+    model = models.efficientnet_b0()
+    model.classifier[1] = nn.Linear(model.classifier[1].in_features, 2)
+    return model
+
+def main(train_path: str, test_path: str, model_out: str, model_name: str):
 
     model, device, train_loader, test_loader, criterion, optimizer = (
-        prepare_model_resnet50(train_path, test_path)
+        prepare_model(train_path, test_path, model_name)
     )
 
     epochs = 10
@@ -100,7 +115,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_out", required=False, default="deepfake_detector_model.pth"
     )
+    parser.add_argument("--model_name", default="RESTNET50")
 
     args = parser.parse_args()
 
-    main(args.train_path, args.test_path, args.model_out)
+    main(args.train_path, args.test_path, args.model_out, args.model_name)
