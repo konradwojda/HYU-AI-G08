@@ -1,9 +1,9 @@
-import torch
-from PIL import Image
-from torchvision import transforms
-from torchvision import models
-import torch.nn as nn
 import argparse
+
+import torch
+import torch.nn as nn
+from PIL import Image
+from torchvision import models, transforms
 
 
 def predict_image(image_path, model_path):

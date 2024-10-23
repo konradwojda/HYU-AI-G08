@@ -1,11 +1,13 @@
+import argparse
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from torch.utils.data import DataLoader
-from torchvision import transforms, models
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from torchvision import models, transforms
+
 from dataset import DeepFakeDataset
-import argparse
 
 
 def train(model, train_loader, criterion, optimizer, device):
@@ -60,7 +62,7 @@ def prepare_model(train_path: str, test_path: str, model_name: str = "RESNET50")
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
-    match(model_name):
+    match (model_name):
         case "RESNET50":
             model = get_resnet50()
         case "EFFICIENTNET":
@@ -83,15 +85,17 @@ def get_resnet50():
     model.fc = nn.Linear(model.fc.in_features, 2)
     return model
 
+
 def get_efficientnet():
     model = models.efficientnet_b0()
     model.classifier[1] = nn.Linear(model.classifier[1].in_features, 2)
     return model
 
+
 def main(train_path: str, test_path: str, model_out: str, model_name: str):
 
-    model, device, train_loader, test_loader, criterion, optimizer = (
-        prepare_model(train_path, test_path, model_name)
+    model, device, train_loader, test_loader, criterion, optimizer = prepare_model(
+        train_path, test_path, model_name
     )
 
     epochs = 10
