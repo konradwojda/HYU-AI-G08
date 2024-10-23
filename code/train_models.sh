@@ -34,6 +34,6 @@ unzip -q $DATA_DIR/${DATASET_FILE} -d $DATA_DIR
 
 for model in "RESNET50" "EFFICIENTNET"; do
     for i in 1 3 5 10; do
-        python3 train.py --train_path ${DATA_DIR}/Dataset/Train --test_path ${DATA_DIR}/Dataset/Test --model_out model_${model}_${i}_epochs.pth --model_name ${model}
+        python3 train.py --train_path ${DATA_DIR}/Dataset/Train --test_path ${DATA_DIR}/Dataset/Test --model_out model_${model}_${i}_epochs.pth --model_name ${model} --epochs ${i} --csv_dump
     done
 done
