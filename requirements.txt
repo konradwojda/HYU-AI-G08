@@ -1,6 +1,4 @@
-fastapi
-uvicorn
-gunicorn
 torch
 torchvision
 pillow
+scikit-learn
