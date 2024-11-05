@@ -1,9 +1,11 @@
 import argparse
+import csv
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.metrics import (accuracy_score, f1_score, precision_score,
+                             recall_score)
 from torch.utils.data import DataLoader
 from torchvision import models, transforms
 
@@ -92,13 +94,19 @@ def get_efficientnet():
     return model
 
 
-def main(train_path: str, test_path: str, model_out: str, model_name: str):
+def main(
+    train_path: str,
+    test_path: str,
+    model_out: str,
+    model_name: str,
+    epochs: int,
+    dump_csv: bool,
+):
 
     model, device, train_loader, test_loader, criterion, optimizer = prepare_model(
         train_path, test_path, model_name
     )
 
-    epochs = 10
     for epoch in range(epochs):
         train_loss = train(model, train_loader, criterion, optimizer, device)
         accuracy, precision, recall, f1 = evaluate(model, test_loader, device)
@@ -108,6 +116,25 @@ def main(train_path: str, test_path: str, model_out: str, model_name: str):
         print(
             f"Accuracy: {accuracy:.4f}, Precision: {precision:.4f}, Recall: {recall:.4f}, F1-Score: {f1:.4f}"
         )
+        if dump_csv:
+            with open(
+                f"metrics_{model_name}_{epochs}_epochs.csv", mode="a", newline=""
+            ) as file:
+                writer = csv.writer(file)
+                if file.tell() == 0:
+                    writer.writerow(
+                        [
+                            "epoch",
+                            "training_loss",
+                            "accuracy",
+                            "precision",
+                            "recall",
+                            "f1score",
+                        ]
+                    )
+                writer.writerow(
+                    [epoch + 1, train_loss, accuracy, precision, recall, f1]
+                )
 
     torch.save(model.state_dict(), model_out)
 
@@ -120,7 +147,16 @@ if __name__ == "__main__":
         "--model_out", required=False, default="deepfake_detector_model.pth"
     )
     parser.add_argument("--model_name", default="RESTNET50")
+    parser.add_argument("--epochs", type=int, default=5)
+    parser.add_argument("--csv_dump", action="store_true", default=False)
 
     args = parser.parse_args()
 
-    main(args.train_path, args.test_path, args.model_out, args.model_name)
+    main(
+        args.train_path,
+        args.test_path,
+        args.model_out,
+        args.model_name,
+        args.epochs,
+        args.csv_dump,
+    )
