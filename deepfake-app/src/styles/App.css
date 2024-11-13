@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+/* -------------------END OF DEFAULT---------------------- */
+
+/* -------------------HEADER---------------------- */
+
+/* -------------------FOOTER---------------------- */
+
+/* -------------------RESULTCARD---------------------- */
+/* .imageAnalysis {
+  display: flex;
+  justify-content: center;
+} */
+
+.card-container {
+  width: 18rem;
+  border-style: solid;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+}
+
+/* -------------------MAINPAGE---------------------- */
+.img-upload {
+  width: 18rem;
+}
+
