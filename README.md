@@ -47,6 +47,11 @@ In this section, the code will be described. For detailed explanations of all pa
 `train_models.sh` – This is simple bash script used to start training on virtual machine. The script automates downloading, unzipping, and training models on a dataset. After unzipping, it trains models at different epoch counts, saving each model and optionally logging metrics.
 
 ## Evaluation & Analysis
+For both models a *confussion matrix* and a metrics such as *training_loss*, *accuracy*, *precision	recall*, *f1score* have been calculated and will be shown below based on the number of training epochs.
+
+### EfficientNet 
+
+### ResNet50
 
 
 ## Related Work
