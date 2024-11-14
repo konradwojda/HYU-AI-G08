@@ -85,7 +85,10 @@ For clarity, the results are shown with accuracy to four decimal places. More de
 #### Confusion Matrix:
 ![ResNet50 Confusion Matrix](results/images/confusion_matrix_RESNET50_8_epochs.png)
 
+## Conclusion, Result Discussion
+Based on the comparison of the results above, ResNet50 consistently outperforms EfficientNet across all key metrics (*training_loss*, *accuracy*, *precision*, *recall*, *f1score*) throughout the training epochs. While both models show steady improvement, ResNet50 achieves higher *accuracy* and maintains superior *precision* and *recall*, leading to a more balanced and effective model overall. EfficientNet, although competitive, exhibits some fluctuations in performance, particularly in *recall* and *precision*. Therefore, ResNet50 is the more reliable and effective model for deepfake detection in this project, demonstrating better stability and performance in recognizing deepfake images.
 
+## Frontend
 ## Related Work
-## Conclusion
+
 
