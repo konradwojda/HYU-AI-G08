@@ -24,11 +24,14 @@ For this project, we chose to use a Kaggle dataset created by Manjil Karki "*[de
 
 ## Methodology
 
-### Used CNNs
-We decided to train our models using __EfficientNet__ and __ResNet50__ convolutional neural networks and then compare their performances to determine which one demonstrates better performance for our task. Both 
-EfficientNet and ResNet50 are known for their powerful feature extraction capabilities and efficiency, which is why we chose them.<br>
-EfficientNet is optimized for high accuracy with fewer parameters by scaling depth, width, and resolution, making it efficient for complex tasks on limited resources.<br>
-ResNet50 introduces residual connections that help prevent vanishing gradients, enabling deeper networks to learn more detailed features, which is crucial for distinguishing real from fake images.
+### Selected CNN Models
+
+For this project, we chose to train and compare two convolutional neural networks **EfficientNet** and **ResNet50** to determine which model performs better for deepfake detection. Both EfficientNet and ResNet50 are widely recognized for their strong feature extraction capabilities and computational efficiency, making them well-suited to the demands of this task.
+
+EfficientNet is designed to achieve high accuracy with fewer parameters by using a compound scaling method that balances depth, width, and resolution. This efficiency allows it to handle complex tasks with limited computational resources, making it an excellent choice for detecting subtle manipulations in images.
+
+ResNet50, on the other hand, introduces residual connections that address the vanishing gradient problem, allowing the network to train effectively even at greater depths. This enables ResNet50 to learn more intricate features, which is particularly useful for distinguishing real images from deepfakes with a high level of detail.
+
 
 ### Infrastructure
 For training the models, we decided to use __Amazon SageMaker Studio Lab__, which offers four hours of free GPU usage (NVIDIA Tesla T4). This was sufficient for our project and provided more computational power than the hardware we own. SageMaker Studio Lab offers many tools for developing and training models.
@@ -86,28 +89,36 @@ For clarity, the results are shown with accuracy to four decimal places. More de
 ![ResNet50 Confusion Matrix](results/images/confusion_matrix_RESNET50_8_epochs.png)
 
 ## Conclusion, Result Discussion
-Based on the comparison of the results above, ResNet50 consistently outperforms EfficientNet across all key metrics (*training_loss*, *accuracy*, *precision*, *recall*, *f1score*) throughout the training epochs. While both models show steady improvement, ResNet50 achieves higher *accuracy* and maintains superior *precision* and *recall*, leading to a more balanced and effective model overall. EfficientNet, although competitive, exhibits some fluctuations in performance, particularly in *recall* and *precision*. Therefore, ResNet50 is the more reliable and effective model for deepfake detection in this project, demonstrating better stability and performance in recognizing deepfake images.
+Based on the comparison of the results above, ResNet50 consistently outperforms EfficientNet across all key metrics (*training_loss*, *accuracy*, *precision*, *recall*, *f1score*) throughout the training epochs. While both models show steady improvement, ResNet50 achieves higher *accuracy* and maintains superior *precision* and *recall*, leading to a more balanced and effective model overall. EfficientNet, although competitive, exhibits some fluctuations in performance, particularly in *recall* and *precision*. 
+
+The confusion matrices confirm that ResNet50 outperforms EfficientNet in detecting deepfake images. ResNet50 has both higher true positive and true negative counts, as well as fewer false positives and false negatives, leading to better precision, recall, and overall accuracy. Therefore, ResNet50 is the more reliable and effective model for deepfake detection in this project, demonstrating better stability and performance.
 
 ## Frontend
 ## Related Work
-__Dataset:__ <br>
-Deepfake Detection Dataset: https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images/data<br>
-OpenForensics Dataset: https://zenodo.org/records/5528418#.YpdlS2hBzDd<br>
-__Machine Learning Frameworks:__ <br>
-PyTorch: https://pytorch.org/<br>
-TorchVision: https://pytorch.org/vision/stable/index.html<br>
-Scikit-learn: https://scikit-learn.org/stable/<br>
-__Tools:__ <br>
-Matplotlib: https://matplotlib.org/<br>
-Seaborn: https://seaborn.pydata.org/<br>
-Pillow: https://pillow.readthedocs.io/en/stable/<br>
-Numpy: https://numpy.org/<br>
-__Models:__ <br>
-EfficientNet <br>
-ResNet50 <br>
-__Cloud Computing Resource:__ <br>
-AWS SageMaker Studio Lab: https://studiolab.sagemaker.aws/<br>
-__Related Works:__ <br>
-FaceForensics++: Learning to Detect Manipulated Facial Images, A. Rossler, D. Cozzolino, L. Verdoliva, C. Riess, J. Thies, M. Nießner, arxiv.org/pdf/1901.08971<br>
-Deepfake Detection Using EfficientNet and XceptionNet, B. Yasser, O. Abdelhameed, DOI:10.1109/ICICIS58388.2023<br>
-Deepfake Detection with Deep Learning: Convolutional Neural Networks versus Transformers, Vrizlynn L. L. Thing, arxiv.org/pdf/2304.03698<br>
+
+**Dataset:**  
+[Deepfake Detection Dataset](https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images/data)  
+[OpenForensics Dataset](https://zenodo.org/records/5528418#.YpdlS2hBzDd)  
+
+**Machine Learning Frameworks:**  
+[PyTorch](https://pytorch.org/)  
+[TorchVision](https://pytorch.org/vision/stable/index.html)  
+[Scikit-learn](https://scikit-learn.org/stable/)  
+
+**Tools:**  
+[Matplotlib](https://matplotlib.org/)  
+[Seaborn](https://seaborn.pydata.org/)  
+[Pillow](https://pillow.readthedocs.io/en/stable/)  
+[Numpy](https://numpy.org/)  
+
+**Models:**  
+EfficientNet  
+ResNet50  
+
+**Cloud Computing Resource:**  
+[AWS SageMaker Studio Lab](https://studiolab.sagemaker.aws/)  
+
+**Related Works:**  
+*FaceForensics++: Learning to Detect Manipulated Facial Images*, A. Rossler, D. Cozzolino, L. Verdoliva, C. Riess, J. Thies, M. Nießner, [arxiv.org/pdf/1901.08971](https://arxiv.org/pdf/1901.08971)  
+*Deepfake Detection Using EfficientNet and XceptionNet*, B. Yasser, O. Abdelhameed, DOI:10.1109/ICICIS58388.2023  
+*Deepfake Detection with Deep Learning: Convolutional Neural Networks versus Transformers*, Vrizlynn L. L. Thing, [arxiv.org/pdf/2304.03698](https://arxiv.org/pdf/2304.03698)  
