@@ -47,11 +47,43 @@ In this section, the code will be described. For detailed explanations of all pa
 `train_models.sh` – This is simple bash script used to start training on virtual machine. The script automates downloading, unzipping, and training models on a dataset. After unzipping, it trains models at different epoch counts, saving each model and optionally logging metrics.
 
 ## Evaluation & Analysis
-For both models a *confussion matrix* and a metrics such as *training_loss*, *accuracy*, *precision	recall*, *f1score* have been calculated and will be shown below based on the number of training epochs.
+For both models, a *confusion matrix* and metrics such as *training_loss*, *accuracy*, *precision*, *recall*, and *f1score* have been calculated and will be shown below based on the number of training epochs. Two of them, final scores for 8 epoch training, will be discussed more thoroughly in this paragraph. For detailed metric scores and confusion matrices for epochs 1, 3, 5, and 8, please click *[here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results)*. The maximum number of 8 epochs, which we ultimately decided was sufficient based on the scores, was limited by the time constraints of using Amazon SageMaker Studio Lab. Specifically, the training time for ResNet50 took approximately 3.5 hours, while the same number of epochs for EfficientNet took only about 2 hours and 20 minutes.
 
 ### EfficientNet 
+#### Metrics:
+For clarity, the results are shown with accuracy to four decimal places. More detailed scores are available here *[here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results)*.
+| Epoch | Training Loss       | Accuracy           | Precision           | Recall             | F1 Score            |
+|-------|---------------------|--------------------|---------------------|--------------------|---------------------|
+| 1     | 0.2561              | 0.8815             | 0.8835              | 0.8809             | 0.8822              |
+| 2     | 0.0941              | 0.8884             | 0.9240              | 0.8481             | 0.8845              |
+| 3     | 0.0728              | 0.9034             | 0.8814              | 0.9339             | 0.9069              |
+| 4     | 0.0600              | 0.8972             | 0.8819              | 0.9190             | 0.9000              |
+| 5     | 0.0526              | 0.9081             | 0.8787              | 0.9485             | 0.9123              |
+| 6     | 0.0475              | 0.8911             | 0.8737              | 0.9161             | 0.8944              |
+| 7     | 0.0414              | 0.9030             | 0.8790              | 0.9363             | 0.9067              |
+| 8     | 0.0380              | 0.9240             | 0.9452              | 0.9013             | 0.9227              |
+
+
+#### Confusion Matrix:
+![EfficientNet Confusion Matrix](results/images/confusion_matrix_EFFICIENTNET_8_epochs.png)
+
 
 ### ResNet50
+#### Metrics:
+For clarity, the results are shown with accuracy to four decimal places. More detailed scores are available here *[here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results)*.
+| Epoch | Training Loss       | Accuracy           | Precision           | Recall             | F1 Score            |
+|-------|---------------------|--------------------|---------------------|--------------------|---------------------|
+| 1     | 0.2981              | 0.8928             | 0.9191              | 0.8631             | 0.8902              |
+| 2     | 0.1354              | 0.9100             | 0.9277              | 0.8908             | 0.9089              |
+| 3     | 0.1031              | 0.9117             | 0.8781              | 0.9576             | 0.9161              |
+| 4     | 0.0812              | 0.9216             | 0.9153              | 0.9304             | 0.9228              |
+| 5     | 0.0710              | 0.9364             | 0.9482              | 0.9241             | 0.9360              |
+| 6     | 0.0594              | 0.9381             | 0.9396              | 0.9374             | 0.9385              |
+| 7     | 0.0528              | 0.8946             | 0.8555              | 0.9516             | 0.9010              |
+| 8     | 0.0447              | 0.9359             | 0.9540              | 0.9170             | 0.9351              |
+
+#### Confusion Matrix:
+![ResNet50 Confusion Matrix](results/images/confusion_matrix_RESNET50_8_epochs.png)
 
 
 ## Related Work
