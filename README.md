@@ -90,5 +90,24 @@ Based on the comparison of the results above, ResNet50 consistently outperforms 
 
 ## Frontend
 ## Related Work
-
-
+__Dataset:__ <br>
+Deepfake Detection Dataset: https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images/data<br>
+OpenForensics Dataset: https://zenodo.org/records/5528418#.YpdlS2hBzDd<br>
+__Machine Learning Frameworks:__ <br>
+PyTorch: https://pytorch.org/<br>
+TorchVision: https://pytorch.org/vision/stable/index.html<br>
+Scikit-learn: https://scikit-learn.org/stable/<br>
+__Tools:__ <br>
+Matplotlib: https://matplotlib.org/<br>
+Seaborn: https://seaborn.pydata.org/<br>
+Pillow: https://pillow.readthedocs.io/en/stable/<br>
+Numpy: https://numpy.org/<br>
+__Models:__ <br>
+EfficientNet <br>
+ResNet50 <br>
+__Cloud Computing Resource:__ <br>
+AWS SageMaker Studio Lab: https://studiolab.sagemaker.aws/<br>
+__Related Works:__ <br>
+FaceForensics++: Learning to Detect Manipulated Facial Images, A. Rossler, D. Cozzolino, L. Verdoliva, C. Riess, J. Thies, M. Nießner, arxiv.org/pdf/1901.08971<br>
+Deepfake Detection Using EfficientNet and XceptionNet, B. Yasser, O. Abdelhameed, DOI:10.1109/ICICIS58388.2023<br>
+Deepfake Detection with Deep Learning: Convolutional Neural Networks versus Transformers, Vrizlynn L. L. Thing, arxiv.org/pdf/2304.03698<br>
