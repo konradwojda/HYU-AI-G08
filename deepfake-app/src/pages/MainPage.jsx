@@ -22,9 +22,10 @@ function MainPage(){
             <div className="analysis"> 
                 <div className="image-upload">
                     <input type="file" onChange={handleChange}/>
-                    <img className="card-img" src={file} alt = "analyze"/>
+                    {file && <img className="card-img" src={file} alt = "analyze"/>}
                 </div>
-                <ResultCard src={file}/> 
+                {/* ResultCard only appears if a file is uploaded */}
+                {file && <ResultCard src={file}/>} 
             </div>
 
             </Card>
