@@ -1,0 +1,141 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------END OF DEFAULT---------------------- */
+
+/* -------------------HEADER---------------------- */
+
+
+nav, .nav-links {
+  display: flex;
+}
+
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh; /* veiw height of the screen */
+}
+
+.nav-links {
+  gap: 2rem; 
+  list-style: none;
+  font-size: 1.5rem; 
+}
+
+.nav-links li:hover {
+  color: grey;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
+
+}
+
+.nav-links a:link {
+  text-decoration: none; 
+  color: black;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* -------------------FOOTER---------------------- */
+footer {
+  /* clear: both; */
+  /* position: relative; */
+  /* height: 200px; */
+  margin-top: 250px;
+}
+
+/* -------------------RESULTCARD---------------------- */
+.imageAnalysis {
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  width: 18rem;
+  border-style: solid;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+}
+
+/* -------------------MAINPAGE---------------------- */
+.img-upload {
+  width: 18rem;
+}
+
+body {
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+}
+
+.main-card {
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  overflow: hidden;
+  border: none;
+}
+
+.image-upload input[type="file"] {
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  color: #007bff;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.image-upload input[type="file"]:hover {
+  background: #007bff;
+  color: white;
+}
+
+
+
