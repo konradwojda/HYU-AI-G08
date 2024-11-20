@@ -94,6 +94,8 @@ Based on the comparison of the results above, ResNet50 consistently outperforms 
 The confusion matrices confirm that ResNet50 outperforms EfficientNet in detecting deepfake images. ResNet50 has both higher true positive and true negative counts, as well as fewer false positives and false negatives, leading to better precision, recall, and overall accuracy. Therefore, ResNet50 is the more reliable and effective model for deepfake detection in this project, demonstrating better stability and performance.
 
 ## Frontend
+Work in progress
+
 ## Related Work
 
 **Dataset:**  
