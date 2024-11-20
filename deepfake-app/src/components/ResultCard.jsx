@@ -1,6 +1,9 @@
 
 import Card from "react-bootstrap/Card"
 import ListGroup from 'react-bootstrap/ListGroup';
+import React, { useState } from "react";
+import axios from "axios";
+
 
 const ResultCard = ({src}) => {
 
