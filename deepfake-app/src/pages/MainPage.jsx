@@ -19,6 +19,7 @@ function MainPage(){
                     </ol>
                 </p>
             </div>
+            {/* another div based on result/not needing the instruction and wanting it to run again */}
             <div className="analysis"> 
                 <div className="image-upload">
                     <input type="file" onChange={handleChange}/>

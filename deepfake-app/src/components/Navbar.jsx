@@ -2,7 +2,7 @@ function Navbar() {
     return (
         <header className="navbar">
             <img
-            src="../public/logo1.png" alt="Team Logo" className="logo"/>
+            src="logo1.png" alt="Team Logo" className="logo"/>
             <nav id="navigaiton">
                 <ul class="nav-links">
                     <li>Home</li>
