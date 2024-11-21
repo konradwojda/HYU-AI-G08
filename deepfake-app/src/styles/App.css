@@ -42,75 +42,103 @@
 /* -------------------HEADER---------------------- */
 
 
-nav, .nav-links {
-  display: flex;
-}
-
-nav {
-  justify-content: space-around;
-  align-items: center;
-  height: 17vh; /* veiw height of the screen */
-}
-
 .nav-links {
-  gap: 2rem; 
-  list-style: none;
-  font-size: 1.5rem; 
+  list-style: none; 
+  display: flex; 
+  gap: 20px; 
+  padding: 0;
+  margin: 0;
 }
 
-.nav-links li:hover {
-  color: grey;
-  text-decoration: underline;
-  text-underline-offset: 1rem;
-  text-decoration-color: rgb(181, 181, 181);
-
-}
-
-.nav-links a:link {
+.nav-links li a {
   text-decoration: none; 
-  color: black;
+  color: black; 
+  font-size: 26px; 
+  font-weight: bold; 
+  transition: color 0.3s ease; 
+}
+
+.nav-links li a:hover {
+  color: grey; 
+  text-decoration: underline;
+}
+
+.navbar {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 20px; 
+  background-color: white;
+  border-bottom: 1px solid #ccc; 
 }
 
 .logo {
-  width: 4rem;
-  height: 4rem;
+  height: 75px; 
+  border-radius: 30%;
 }
 
 /* -------------------FOOTER---------------------- */
-footer {
-  /* clear: both; */
-  /* position: relative; */
-  /* height: 200px; */
-  margin-top: 250px;
+/* Footer container */
+.footer {
+  position: fixed; 
+  bottom: 0; 
+  width: 100%; 
+  color: black; 
+  text-align: center; 
+  padding: 10px 0; 
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+  font-size: 14px; 
+}
+
+/* Footer content section */
+.footer-content {
+  display: flex; 
+  justify-content: center; 
+  gap: 20px; 
+  margin-bottom: 5px; 
+}
+
+.footer-button a {
+  text-decoration: none;
+  color: black; 
+  font-weight: bold; 
+  font-size: 14px; 
+  transition: color 0.3s ease; 
+}
+
+.footer-button a:hover {
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+main {
+  flex: 1; 
 }
 
 /* -------------------RESULTCARD---------------------- */
-.imageAnalysis {
+/* .imageAnalysis {
   display: flex;
   justify-content: center;
 }
 
 .card-container {
-  width: 18rem;
+  width: 30rem;
   border-style: solid;
 }
 
 .card-img {
   width: 100%;
   height: auto;
-}
+} */
 
 /* -------------------MAINPAGE---------------------- */
-.img-upload {
-  width: 18rem;
-}
-
-body {
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-}
-
 .main-card {
   background: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -119,22 +147,101 @@ body {
   overflow: hidden;
   border: none;
 }
+.imageAnalysis {
+  max-width: 1000px; /* Limit the width for readability */
+  margin: 50px auto; /* Center the content vertically and horizontally */
+  text-align: center; /* Center align text */
+  font-family: Arial, sans-serif; /* Apply a clean font */
+}
 
-.image-upload input[type="file"] {
-  margin: 10px 0;
-  padding: 8px;
-  font-size: 14px;
+h2 {
+  font-size: 28px; /* Larger font size for the heading */
+  font-weight: bold;
+  color: #333; /* Dark grey color for better readability */
+  margin-bottom: 20px;
+}
+
+.input-container {
+  text-align: center; /* Center the content */
+  margin: 20px 0; /* Add spacing */
+}
+
+input[type="file"] {
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #333; 
+  background-color: #eef4ff; 
+  border: 2px dashed #007bff; 
+  border-radius: 10px; 
+  outline: none; 
+  transition: all 0.3s ease; 
   cursor: pointer;
-  border: 2px solid #007bff;
-  border-radius: 5px;
-  color: #007bff;
-  background: #f9f9f9;
+}
+
+input[type="file"]:hover {
+  background-color: #dce8ff; 
+  border-color: #0056b3; 
+}
+
+input[type="file"]:focus {
+  background-color: #cfe2ff; 
+  border-color: #0056b3; 
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #007bff; 
+  font-weight: bold;
+}
+
+.card-container {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border: none; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  background-color: #fff; 
+}
+
+.card-img {
+  max-height: 300px; 
+  object-fit: cover; 
+  border-bottom: 1px solid #ddd; 
+}
+
+.list-group-item {
+  font-weight: bold; 
+  text-align: center; 
+  border: none;
+  padding: 15px;
+  background-color: #f9f9f9; 
+}
+
+.list-group-item + .list-group-item {
+  border-top: 1px solid #ddd; 
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; 
+  background-color: #007bff; 
+  border: none;
+  border-radius: 5px; 
   transition: all 0.3s ease;
 }
 
-.image-upload input[type="file"]:hover {
-  background: #007bff;
-  color: white;
+button:hover {
+  background-color: #0056b3; 
+  cursor: pointer;
+}
+
+.text-danger {
+  color: #dc3545; 
+  font-weight: bold;
 }
 
 

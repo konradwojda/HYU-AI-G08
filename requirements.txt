@@ -4,3 +4,7 @@ pillow
 scikit-learn
 matplotlib
 seaborn
+flask
+flask-cors
+pillow
+gunicorn 
