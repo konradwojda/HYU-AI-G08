@@ -52,7 +52,7 @@ In this section, the code will be described. For detailed explanations of all pa
 ## Evaluation & Analysis
 For both models, a *confusion matrix* and metrics such as *training_loss*, *accuracy*, *precision*, *recall*, and *f1score* have been calculated and will be shown below based on the number of training epochs. Two of them, final scores for 8 epoch training, will be discussed more thoroughly in this paragraph. For detailed metric scores and confusion matrices for epochs 1, 3, 5, and 8, please click *[here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results)*. The maximum number of 8 epochs, which we ultimately decided was sufficient based on the scores, was limited by the time constraints of using Amazon SageMaker Studio Lab. Specifically, the training time for ResNet50 took approximately 3.5 hours, while the same number of epochs for EfficientNet took only about 2 hours and 20 minutes.
 
-### EfficientNet 
+### EfficientNet B0
 #### Metrics:
 For clarity, the results are shown with accuracy to four decimal places. More detailed scores are available here *[here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results)*.
 | Epoch | Training Loss       | Accuracy           | Precision           | Recall             | F1 Score            |
