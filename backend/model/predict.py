@@ -4,6 +4,9 @@ import torch
 import torch.nn as nn
 from PIL import Image
 from torchvision import models, transforms
+import warnings
+
+warnings.filterwarnings("ignore")
 
 
 def predict_image(image_path, model_path):
@@ -18,10 +21,13 @@ def predict_image(image_path, model_path):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    model = models.resnet50(pretrained=False)
+    model = models.resnet50(weights=None)
     model.fc = nn.Linear(model.fc.in_features, 2)
 
-    model.load_state_dict(torch.load(model_path))
+    if device == "cuda":
+        model.load_state_dict(torch.load(model_path))
+    else:
+        model.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
     model = model.to(device)
     model.eval()
 
