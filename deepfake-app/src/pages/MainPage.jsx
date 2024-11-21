@@ -52,6 +52,8 @@ const MainPage = () => {
   return (
  
     <div className="imageAnalysis">
+        <Card className="main-card"> 
+
       {!imageSrc && (
         <div>
           <h2>Upload an Image for Analysis</h2>
@@ -80,6 +82,7 @@ const MainPage = () => {
                   <ListGroup.Item key={index}>{result}</ListGroup.Item>
                 ))}
           </ListGroup>
+
           <Card.Body>
             
             <Button
@@ -95,6 +98,20 @@ const MainPage = () => {
           </Card.Body>
         </Card>
       )}
+      {/* <Card.Body>
+            
+            <Button
+              onClick={() => {
+                setImageSrc(null);
+                setAnalysisResults([]);
+                setError(null);
+              }}
+              variant="primary"
+            >
+              Analyze another image!
+            </Button>
+          </Card.Body> */}
+      </Card>
     </div>
   );
 };
