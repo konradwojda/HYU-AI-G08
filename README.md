@@ -100,11 +100,9 @@ For this project, React was used to create a dynamic and interactive user interf
 
 The main files of our deepfake-app and theirs tasks are:
 
-`MainPage.jsx`
-This component is designed to allow users to upload an image, send it to a backend server for analysis using out trained model, and display the results of running or any errors the server my return.
+`MainPage.jsx` - This component is designed to allow users to upload an image, send it to a backend server for analysis using out trained model, and display the results of running or any errors the server my return.
 
-`server.py`
-This script serves as a backend API, providing an endpoint for uploading images and managing the interaction with a machine learning model. It accepts image files from the front end, temporarily saves them for processing, and uses a subprocess to execute the model's prediction logic. Once the prediction is complete, the script returns the results or error messages
+`server.py` - This script serves as a backend API, providing an endpoint for uploading images and managing the interaction with a machine learning model. It accepts image files from the front end, temporarily saves them for processing, and uses a subprocess to execute the model's prediction logic. Once the prediction is complete, the script returns the results or error messages
 
 ## Related Work
 
