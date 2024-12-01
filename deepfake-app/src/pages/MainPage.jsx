@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
+import LoadingText from "../components/LoadingText";
 
 const MainPage = () => {
   const [imageSrc, setImageSrc] = useState(null); // For displaying the uploaded image
@@ -65,11 +66,12 @@ const MainPage = () => {
           <Card.Img variant="top" src={imageSrc} alt="Uploaded Image" className="card-img" />
           <Card.Body>
             <Card.Title>Image Results</Card.Title>
+
             {loading ? (
-              <Card.Text>Analyzing the image, please wait...</Card.Text>
-            ) : error ? (
+              <LoadingText />
+              ) : error ? (
               <Card.Text className="text-danger">{error}</Card.Text>
-            ) : (
+              ) : (
               <Card.Text>
                 Below are the results of the analysis for the uploaded image:
               </Card.Text>
@@ -83,34 +85,22 @@ const MainPage = () => {
                 ))}
           </ListGroup>
 
-          <Card.Body>
-            
-            <Button
-              onClick={() => {
-                setImageSrc(null);
-                setAnalysisResults([]);
-                setError(null);
-              }}
-              variant="primary"
-            >
-              Analyze another image!
-            </Button>
-          </Card.Body>
+          {!loading && (analysisResults.length > 0 || error) && (
+            <Card.Body>
+              <Button
+                onClick={() => {
+                  setImageSrc(null);
+                  setAnalysisResults([]);
+                  setError(null);
+                }}
+                variant="primary"
+              >
+                Analyze another image!
+              </Button>
+            </Card.Body>
+          )}
         </Card>
       )}
-      {/* <Card.Body>
-            
-            <Button
-              onClick={() => {
-                setImageSrc(null);
-                setAnalysisResults([]);
-                setError(null);
-              }}
-              variant="primary"
-            >
-              Analyze another image!
-            </Button>
-          </Card.Body> */}
       </Card>
     </div>
   );

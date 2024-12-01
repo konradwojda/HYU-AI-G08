@@ -9,7 +9,7 @@ function Footer() {
           <a href="/">Home</a>
         </div>
         <div className="footer-button">
-          <a href="/favorites">About</a>
+          <a href="https://github.com/konradwojda/HYU-AI-G08">About</a>
         </div>
       </section>
       <p>Copyright &#169; 2024 TheFutureOfAI. All Rights Reserved</p>

@@ -1,8 +1,8 @@
 function Navbar() {
     return (
         <header className="navbar">
-            <img
-            src="logo1.png" alt="Team Logo" className="logo"/>
+            <a href="/"><img
+            src="logo1.png" alt="Team Logo" className="logo" /></a>
             {/* <p>Deepfake Image Detector</p> */}
             <nav id="navigaiton">
                 <ul class="nav-links">

@@ -94,7 +94,17 @@ Based on the comparison of the results above, ResNet50 consistently outperforms 
 The confusion matrices confirm that ResNet50 outperforms EfficientNet in detecting deepfake images. ResNet50 has both higher true positive and true negative counts, as well as fewer false positives and false negatives, leading to better precision, recall, and overall accuracy. Therefore, ResNet50 is the more reliable and effective model for deepfake detection in this project, demonstrating better stability and performance.
 
 ## Frontend
-Work in progress
+In this section, the frontend code will be described. For a detailed explanation of all parts of the code, please visit *[Code Explanation 2](https://github.com/konradwojda/HYU-AI-G08/blob/main/docs/code_explanation2.md)*. The main files of our project and theirs tasks are:
+
+For this project, React was used to create a dynamic and interactive user interface. Combined with Flask, React functions as the front-end framework, seamlessly interacting with Flask's backend API to send data for processing and retrieve predictions from the trained machine learning models. This integration ensures smooth communication between the client and server, enabling an efficient and responsive application experience.
+
+The main files of our deepfake-app and theirs tasks are:
+
+`MainPage.jsx`
+This component is designed to allow users to upload an image, send it to a backend server for analysis using out trained model, and display the results of running or any errors the server my return.
+
+`server.py`
+This script serves as a backend API, providing an endpoint for uploading images and managing the interaction with a machine learning model. It accepts image files from the front end, temporarily saves them for processing, and uses a subprocess to execute the model's prediction logic. Once the prediction is complete, the script returns the results or error messages
 
 ## Related Work
 
@@ -119,6 +129,9 @@ ResNet50
 
 **Cloud Computing Resource:**  
 [AWS SageMaker Studio Lab](https://studiolab.sagemaker.aws/)  
+
+**Front End Resource:**  
+[ML Integration with React&Flask](https://medium.com/@pooranjoyb/integration-deployment-of-ml-model-with-react-flask-3033dd6034b3)  
 
 **Related Works:**  
 *FaceForensics++: Learning to Detect Manipulated Facial Images*, A. Rossler, D. Cozzolino, L. Verdoliva, C. Riess, J. Thies, M. Nießner, [arxiv.org/pdf/1901.08971](https://arxiv.org/pdf/1901.08971)  
