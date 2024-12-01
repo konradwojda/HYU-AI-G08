@@ -94,7 +94,7 @@ Based on the comparison of the results above, ResNet50 consistently outperforms 
 The confusion matrices confirm that ResNet50 outperforms EfficientNet in detecting deepfake images. ResNet50 has both higher true positive and true negative counts, as well as fewer false positives and false negatives, leading to better precision, recall, and overall accuracy. Therefore, ResNet50 is the more reliable and effective model for deepfake detection in this project, demonstrating better stability and performance.
 
 ## Frontend
-In this section, the frontend code will be described. For a detailed explanation of all parts of the code, please visit *[Code Explanation 2](https://github.com/konradwojda/HYU-AI-G08/blob/main/docs/code_explanation2.md)*. The main files of our project and theirs tasks are:
+In this section, the frontend code will be described.
 
 For this project, React was used to create a dynamic and interactive user interface. Combined with Flask, React functions as the front-end framework, seamlessly interacting with Flask's backend API to send data for processing and retrieve predictions from the trained machine learning models. This integration ensures smooth communication between the client and server, enabling an efficient and responsive application experience.
 
