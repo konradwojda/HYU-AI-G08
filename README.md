@@ -137,3 +137,4 @@ ResNet50
 *FaceForensics++: Learning to Detect Manipulated Facial Images*, A. Rossler, D. Cozzolino, L. Verdoliva, C. Riess, J. Thies, M. Nießner, [arxiv.org/pdf/1901.08971](https://arxiv.org/pdf/1901.08971)  
 *Deepfake Detection Using EfficientNet and XceptionNet*, B. Yasser, O. Abdelhameed, DOI:10.1109/ICICIS58388.2023  
 *Deepfake Detection with Deep Learning: Convolutional Neural Networks versus Transformers*, Vrizlynn L. L. Thing, [arxiv.org/pdf/2304.03698](https://arxiv.org/pdf/2304.03698)  
+*EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks*, Mingxing Tan, Quoc V. Le, [arxiv.org/pdf/1905.11946](https://arxiv.org/abs/1905.11946)
