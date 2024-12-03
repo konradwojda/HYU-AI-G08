@@ -104,6 +104,8 @@ The main files of our deepfake-app and theirs tasks are:
 
 `server.py` - This script serves as a backend API, providing an endpoint for uploading images and managing the interaction with a machine learning model. It accepts image files from the front end, processes it directly in memory without saving it to disk, and uses a deep learning model to make predictions. Once the prediction is complete, the script returns the results or error messages.
 
+`docker-compose.yml` - sets up a local development environment with two services: a React-based frontend and a Flask-based backend. It uses Node.js and Python images, maps local code directories to the containers, and installs necessary dependencies at runtime. This setup is intended only for development purposes and is not configured for production use.
+
 ## Related Work
 
 **Dataset:**  
