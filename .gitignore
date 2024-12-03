@@ -1,7 +1,4 @@
 .venv
 code/data/*/*
-*/__pycache__
 .env
-
-# file too big
-model/deepfake_detector.pth
+__pycache__
