@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import os
 from model.predict import predict_image
 
 app = Flask(__name__)
