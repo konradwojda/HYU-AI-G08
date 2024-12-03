@@ -1,0 +1,4 @@
+gunicorn
+pillow
+flask
+flask-cors
