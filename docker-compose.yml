@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: node:18
+    working_dir: /app
+    volumes:
+      - ./deepfake-app:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    command: sh -c "npm install && npm start"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+
+  backend:
+    image: python:3.12
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      - ./requirements-server.txt:/requirements-server.txt
+    ports:
+      - "5000:5000"
+    command: sh -c "pip install -r /requirements-server.txt && pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu && gunicorn --bind 0.0.0.0:5000 server:app"
+    environment:
+      - FLASK_ENV=development

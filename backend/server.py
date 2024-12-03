@@ -1,58 +1,37 @@
-import subprocess
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import os
+from model.predict import predict_image
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 
-
 @app.route("/")
 def home():
-    return {"message": "Deepfake detection API is runnings"}
+    return {"message": "Deepfake detection API is running."}
 
-@app.route("/upload", methods=['POST'])
+
+@app.route("/upload", methods=["POST"])
 def upload():
     """
-    Handles image upload and runs prediction.
+    Handles image upload and runs prediction without saving the file to disk.
     """
     if "file" not in request.files:
         return jsonify({"error": "No file provided"}), 400
-    
-    file = request.files['file']
+
+    file = request.files["file"]
 
     if file.filename == "":
         return jsonify({"error": "No file selected"}), 400
-    
-    #save uploaded file --> WORKING
-    img_path = os.path.join("./uploads", file.filename)
-    file.save(img_path)
 
     try:
-        # Perform prediction via subprocess
-        result = subprocess.check_output(
-            ["python", "./model/predict.py", img_path],
-            stderr=subprocess.STDOUT,  # Capture errors as part of the output
-            text=True,  # Automatically decode to string
+        result = predict_image(
+            image_file=file.stream, model_path="deepfake_detector.pth"
         )
-        # Cleanup the saved file
-        os.remove(img_path)        
         return jsonify({"message": result.strip()})
-    
-    except subprocess.CalledProcessError as e:
-        # Handle errors in the subprocess execution
-        error_message = e.output.strip()
-        return jsonify({"error": f"Subprocess failed: {error_message}"}), 500
-
-        # return jsonify({"message": f"The image is: {result}"})
     except Exception as e:
-        return jsonify({"error": str(e)}), 500    
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":
-    # Ensure the uploads folder exists
-    os.makedirs("./uploads", exist_ok=True)
-
-    # Start the Flask app
     app.run(debug=True)

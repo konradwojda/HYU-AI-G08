@@ -4,12 +4,14 @@ import torch
 import torch.nn as nn
 from PIL import Image
 from torchvision import models, transforms
+from io import BytesIO
 import warnings
+from typing import Union
 
 warnings.filterwarnings("ignore")
 
 
-def predict_image(image_path, model_path):
+def predict_image(image_file: Union[str, BytesIO], model_path: str):
 
     transform = transforms.Compose(
         [
@@ -31,7 +33,7 @@ def predict_image(image_path, model_path):
     model = model.to(device)
     model.eval()
 
-    image = Image.open(image_path).convert("RGB")
+    image = Image.open(image_file).convert("RGB")
     image = transform(image).unsqueeze(0).to(device)
 
     with torch.no_grad():
