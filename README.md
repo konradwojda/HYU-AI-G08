@@ -10,14 +10,12 @@
 ## Project Title: 
 **Deep Fake Facial Image Detector**
 
-## Introduction - Initial Proposal (Assignment 1):
+## Introduction - Initial Proposal:
 In recent years, with the rapid advancement of AI and the ease of generating fake images, “deep fakes” have emerged as a significant threat. These digitally altered images, videos, and audios impact not only celebrities but also everyday individuals. This issue has gained particular attention in Korea, where deep fake crimes have reached unprecedented levels. The number of underage victims has increased 4.5 times, from 64 in 2022 to 288 over the past two years, while the total number of victims grew 3.7 times, rising from 212 to 781 during that same period according to [Yonhap News Agency](https://en.yna.co.kr/view/AEN20240828003100315). This alarming growth inspired us to focus on developing a solution to detect deep fake images in hopes to help combat this growing concern.
 
-Our objective is to build an accurate deep fake facial image detector by training and comparing the performance of various models. To accomplish this, we plan to utilize this [Kaggle dataset](https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images), which contains approximately 190,000 facial images. We will split the dataset into two parts: 80% for training and 20% for validation. The models we intend to use include EfficientNet and ResNet50, among others. Once trained, the models will be analyzed thoroughly to evaluate their effectiveness. Depending on the results, we may further extend the scope of our project.  
+Our objective is to build an accurate deep fake facial image detector by training and comparing the performance of various models. To accomplish this, we utilized this [Kaggle dataset](https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images), which contains approximately 190,000 facial images. We will split the dataset into two parts: 80% for training and 20% for validation. The models we intend to use include EfficientNetB0 and ResNet50, among others. Once trained, the models will be analyzed thoroughly to evaluate their effectiveness. Depending on the results, we may further extend the scope of our project.  
 
-For training, we plan to use our local hardware. However, if additional resources are required, we will leverage AWS SageMaker within the limits of available free credits.  
-
-You can follow the progress of our project on our *[Github](https://github.com/konradwojda/HYU-AI-G08)*
+For training, we leveraged AWS SageMaker Studio Lab within the limits of available free credits.  
 
 ## Dataset
 For this project, we chose to use a Kaggle dataset created by Manjil Karki ["deepfake and real images"](https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images). The dataset includes both manipulated (fake) and real images, originally sourced from the [OpenForensics Dataset](https://sites.google.com/view/ltnghia/research/openforensics). The dataset contains approximately 190,000 images, divided into three main directories: Train (70,000 fake, 70,000 real), Test (5,492 fake, 5,413 real), and Validation (19,600 fake, 19,800 real).
@@ -44,11 +42,11 @@ ResNet50, known for its introduction of residual connections addresses the vanis
 ### Infrastructure
 For training the models, we decided to use __Amazon SageMaker Studio Lab__, a cloud-based machine learning environment that offers free access to computational resources for building, training, and deploying machine learning models. This platform provides preconfigured environments with essential libraries and tools, allowing users to start their projects without the need for extensive setup.
 
-Our choice of SageMaker Studio Lab was motivated by its capability to provide reliable computational power without incurring additional costs, effectively addressing the hardware limitations of our local machines. The environment supports seamless integration with Python-based machine learning frameworks such as PyTorch, TensorFlow, and Scikit-learn, enabling flexibility and compatibility with our project requirements.
+Our choice of SageMaker  Lab was motivated by its capability to provide reliable computational power without incurring additional costs, effectively addressing the hardware limitations of our local machines. The environment supports seamless integration with Python-based machine learning frameworks such as PyTorch, TensorFlow, and Scikit-learn, enabling flexibility and compatibility with our project requirements.
 
 We utilized G4dn.xlarge instance, which feature NVIDIA Tesla T4 GPU, 4 virtual CPUs, 16 GiB of memory, and 125 GB of NVMe SSD storage. These specifications allowed us to handle the computational demands of training deep learning models on a dataset of approximately 190,000 images.
 
-SageMaker Studio Lab's intuitive interface and robust infrastructure provided us with the necessary tools to develop, train, and evaluate our models effectively within the constraints of the platform's free-tier offering of four GPU hours per session.
+SageMaker  Lab's intuitive interface and robust infrastructure provided us with the necessary tools to develop, train, and evaluate our models effectively within the constraints of the platform's free-tier offering of four GPU hours per session.
 
 ### Brief Code Explanation
 In this section, the code will be described. For detailed explanations of all parts of the code, please visit [Code Explanation](https://github.com/konradwojda/HYU-AI-G08/blob/main/docs/code_explanation.md). The main files of our project and their tasks are:
@@ -97,7 +95,7 @@ This is a simple bash script used to start training on a virtual machine. The sc
 
 ## Evaluation & Analysis
 This section evaluates the performance of both models using metrics such as training loss, accuracy, precision, recall, and F1-score, alongside their respective confusion matrices. While these metrics have been calculated across all training epochs, the discussion here focuses on the final results after 8 epochs of training. Detailed metrics and confusion matrices for epochs 1, 3, 5, and 8 can be accessed [here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results). 
-The decision to limit training to 8 epochs was driven by time constraints associated with Amazon SageMaker Studio Lab. Specifically, training ResNet50 required approximately 3.5 hours, whereas EfficientNetB0 completed the same number of epochs in about 2 hours and 20 minutes. Based on the observed performance trends, 8 epochs provided sufficient convergence for both models within the available resources. For clarity, the reported results are presented with accuracy to four decimal places. Comprehensive scores for all metrics across epochs can be found [here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results). Confusion matrices for EfficientNetB0 and ResNet50 training after 8 epochs are shown in the figures below. 
+The decision to limit training to 8 epochs was driven by time constraints associated with Amazon SageMaker  Lab. Specifically, training ResNet50 required approximately 3.5 hours, whereas EfficientNetB0 completed the same number of epochs in about 2 hours and 20 minutes. Based on the observed performance trends, 8 epochs provided sufficient convergence for both models within the available resources. For clarity, the reported results are presented with accuracy to four decimal places. Comprehensive scores for all metrics across epochs can be found [here](https://github.com/konradwojda/HYU-AI-G08/tree/main/results). Confusion matrices for EfficientNetB0 and ResNet50 training after 8 epochs are shown in the figures below. 
 
 ### EfficientNet B0
 #### Metrics:
@@ -187,7 +185,7 @@ Example of a fake facial image detected by the model:
 - ResNet50  
 
 **Cloud Computing Resource:**  
-- [AWS SageMaker Studio Lab](https://studiolab.sagemaker.aws/)  
+- [AWS SageMaker  Lab](https://lab.sagemaker.aws/)  
 
 **Front End Resource:**  
 - [ML Integration with React&Flask](https://medium.com/@pooranjoyb/integration-deployment-of-ml-model-with-react-flask-3033dd6034b3)  
